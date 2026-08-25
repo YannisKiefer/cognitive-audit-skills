@@ -22,6 +22,6 @@
     </g>
   </g>
   <text x="260" y="128" font-family="ui-monospace,Menlo,monospace" font-size="58" font-weight="700" fill="#e6edf3">cognitive-audit-skills</text>
-  <text x="264" y="176" font-family="ui-monospace,Menlo,monospace" font-size="27" fill="#8b949e">18 agent skills. Auditing how you actually work.</text>
-  <text x="264" y="218" font-family="ui-monospace,Menlo,monospace" font-size="21" fill="#6e7681">Codex. Claude. OpenCode. Kimi. Grok. Graded like evidence.</text>
+  <text x="264" y="176" font-family="ui-monospace,Menlo,monospace" font-size="27" fill="#8b949e">Your AI history is a dataset about how you work.</text>
+  <text x="264" y="218" font-family="ui-monospace,Menlo,monospace" font-size="21" fill="#6e7681">Claude / Codex / Cursor / OpenCode / Kimi / Grok - graded like evidence.</text>
 </svg>
