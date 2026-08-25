@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/banner.svg" alt="cognitive-audit-skills" width="100%"/>
+<img src="assets/banner.svg?v=2" alt="cognitive-audit-skills" width="100%"/>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ![Skills](https://img.shields.io/badge/skills-18-blue)
