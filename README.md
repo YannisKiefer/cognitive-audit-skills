@@ -10,137 +10,108 @@
 
 ---
 
-# Your AI history is a dataset about how you work.
+# Your AI has been keeping a diary about you.
 
-Every session you've had with Claude Code, Codex, Cursor, OpenCode, Kimi,
-Grok, or ChatGPT is a record of a real decision. How you framed the
-problem. What you tried first. What broke. What you did next.
+Every prompt. Every bug. Every 2am "why won't this build".
+Every time you typed "keep it simple" and then did the opposite.
 
-One conversation shows what you did.
+Months of it. Thousands of sessions. Sitting on your disk right now,
+across Claude, Codex, Cursor, and everything else you've used.
 
-Ten thousand, read together, show **how you operate** - including things
-you cannot see from inside any single chat. Which mistakes you repeat.
-Which lessons never stick. Where your hours actually go. Which model makes
-you better, and which quietly makes you worse.
+You will never read all of that. No human would.
 
-Nobody manually reads 10,000 of their own prompts looking for patterns.
-An agent can.
-
-These 18 skills give it the method.
+**But an AI can.** And when it does, it comes back with stuff like this:
 
 ---
 
-## What kind of findings? Like these.
+> ### 🔍 "You're a great debugger right up until the first failure. Then you panic."
+>
+> 47 debugging sessions. First attempt: usually sharp. After it fails?
+> You ditch the hypothesis and start rewriting huge chunks - 61% of the
+> time. Those sessions took 2.4x longer to close.
+>
+> **Fix:** after attempt #2 dies, write three competing theories before
+> touching anything.
 
-> Example output from a demo audit. Fictional operator, realistic numbers.
+> ### 🔁 "You've 'learned' the same lesson 11 times."
+>
+> Same mistake. Spread over 7 months, 4 projects, 3 different models.
+> You explained it perfectly every time. Then did it again.
+>
+> **Fix:** stop trusting memory. One lint rule catches all 11.
 
-### 🔍 "You don't have a debugging problem. You have a second-attempt problem."
+> ### 🤖 "Claude makes you think. Codex makes you move. You keep using them backwards."
+>
+> Architecture done in Codex got reopened twice as often within 60 days.
+> Implementation done in Claude bought you nothing but slowness.
+> Your own data already picked the winning split. You just never saw it.
 
-Across 47 debugging sessions, the first attempt usually started from a
-clear hypothesis. After it failed, you switched to broad rewrites in 61%
-of cases. Those sessions took 2.4x more iterations to close.
+> ### ⚡ "You say deadlines focus you. Deadlines make you ship untested code."
+>
+> 9 of 11 deploys under deadline pressure: zero checks between the AI's
+> final answer and production. Your words stayed confident. Your
+> behavior didn't.
 
-**Pattern:** first failure → abandon hypothesis → widen scope
-**Try:** after attempt #2 fails, force three competing hypotheses before editing again
-
-### ⚡ "You say you prefer simple solutions. Your behavior says otherwise."
-
-You asked to "keep it simple" 38 times. In 24 of those tasks, scope
-expanded after the first implementation failed. The complexity entered
-during recovery, not design.
-
-### 🤖 "Claude makes you think. Codex makes you move."
-
-Claude sessions held more research and option generation. Codex sessions
-reached implementation faster - but architecture tasks done in Codex were
-reopened twice as often.
-
-**Your best split may be:** Claude for architecture, Codex for execution.
-
-### 🔁 "You've learned this lesson 11 times."
-
-The same API-boundary mistake, corrected across 7 months, 4 projects,
-and 3 different models. The problem stopped being knowledge long ago.
-That fix belongs in a lint rule, not in your memory.
-
-Full demo audit with input/output numbers: [EXAMPLES.md](EXAMPLES.md)
+*Example output - fictional operator, real format.*
 
 ---
 
-## What would it find in yours?
+## Now picture it running on YOUR history.
 
-- 🧠 Do you actually form hypotheses, or jump straight to code?
-- 🔁 Which lessons have you "learned" more than once?
-- 🎯 What do you believe you're good at - and what do outcomes say?
-- 🤖 Which model genuinely produces fewer rework loops *for you*?
-- ⚠️ Where does AI make you faster at shipping wrong answers?
-- 🪞 Where do your stated priorities and your logged behavior disagree?
-- ⏱️ How much of your time goes to product versus meta-work about work?
-- 📚 Which mistakes vanish after one correction, and which return monthly?
+Nobody configures anything. You don't upload anything.
 
-You can answer any of these badly from memory. The corpus answers them
-with counts, dates, and counterexamples.
+The agent goes looking through your machine itself. Finds every session
+store, every log, every repo. Reads thousands of decisions you barely
+remember making. Connects sessions you thought were unrelated. Counts
+everything.
+
+Then it tells you the patterns you've been living inside without seeing:
+
+- the mistakes you keep making and quietly re-googling
+- the lessons you "learned" that changed absolutely nothing
+- what happens to your quality the exact moment you get impatient
+- which model earns its place and which silently burns your hours
+- what you claim to care about vs. what your logs prove you do
+- where your time actually goes (rarely where you think)
+
+You can't see any of this from inside a single chat. That's the point.
+One conversation is an anecdote. Ten thousand are a mirror.
 
 ---
 
 ## How it works
 
 ```text
-your AI history
-      |
-      v
-Claude + Codex + Cursor + OpenCode + Kimi + Grok + git + ...
-      |
-      v
-agent discovers every accessible source itself
-      |
-      v
-rebuilds real work episodes from the message noise
-      |
-      v
-separates YOUR behavior from the MODEL'S behavior
-      |
-      v
-compares decisions -> actions -> outcomes, across months
-      |
-      v
-challenges every candidate pattern with counterexamples
-      |
-      v
-shows you what survived, with confidence ratings
+already on your disk:
+    every Codex session
+    every Claude chat
+    every Cursor session
+    every git commit
+            |
+            v
+  one agent finds ALL of it itself
+            |
+            v
+  reads it, connects it, counts everything
+            |
+            v
+  kills every pattern it can't defend with evidence
+            |
+            v
+  tells you what survived
 ```
 
-Not what you said once. What you repeatedly did.
+Not what you said once. What you kept doing.
 
 ---
 
-## This is not an "analyze me" prompt
-
-| Normal "analyze me" | This audit |
-|---|---|
-| one conversation | months of sessions, every platform |
-| personality adjectives | observable behavior |
-| vibes | counts, dates, ranges |
-| cherry-picked moments | repeated patterns required |
-| "you seem ambitious" | "after first failure you widen scope 61% of the time" |
-| static description | specific intervention |
-| nothing can disprove it | counterevidence hunted on purpose |
-
-And it runs like an investigation, not a quiz. The agent discovers your
-session stores itself, inventories what exists and what is unreadable,
-reconstructs tasks that span multiple sessions, normalizes differences
-between models, grades every claim HIGH/MEDIUM/LOW confidence, and ends
-by telling you what the data *cannot* show.
-
----
-
-## Run your first audit
+## Run it on yourself tonight
 
 ```bash
 npx skills add YannisKiefer/cognitive-audit-skills
 ```
 
-Then paste this into your agent:
+Then paste this into your agent and walk away:
 
 ```text
 Run a full cognitive audit on my own history.
@@ -156,101 +127,84 @@ Redact any secrets. End with the 3 changes that have the highest expected
 payoff.
 ```
 
-## What you get back
+## What comes out
 
 ```text
-HOW YOU ACTUALLY WORK            <- one page, plain language
-YOUR 10 SURPRISING PATTERNS      <- each with evidence + counterevidence
-BELIEF VS BEHAVIOR               <- the uncomfortable table
-YOUR RECURRING FAILURE LOOPS     <- ranked by cost
-WHAT YOU ACTUALLY LEARN          <- and what you keep re-learning
+HOW YOU ACTUALLY WORK           <- one page, no fluff
+YOUR 10 SURPRISING PATTERNS     <- each with proof AND counterevidence
+BELIEF VS BEHAVIOR              <- the table that hurts
+YOUR FAILURE LOOPS              <- ranked by what they cost you
+WHAT YOU KEEP RE-LEARNING       <- the 11-times list
 WHERE AI MAKES YOU BETTER
-WHERE AI MAKES YOU WORSE
-ME x MODEL MATRIX                <- which model for which work
-YOUR HIDDEN BOTTLENECKS          <- rarely where you think
-YOUR PERSONAL OPERATING MANUAL   <- ~10 WHEN/DO/BECAUSE rules
-3 CHANGES WITH THE HIGHEST ROI
+WHERE AI MAKES YOU WORSE        <- yes, it happens to everyone
+WHICH MODEL FOR WHICH WORK      <- your data, not benchmarks
+YOUR HIDDEN BOTTLENECKS         <- almost never coding speed
+PERSONAL OPERATING MANUAL       <- ~10 WHEN / DO / BECAUSE rules
+3 CHANGES WITH THE BIGGEST PAYOFF
 ```
+
+Full demo run with input/output numbers: [EXAMPLES.md](EXAMPLES.md)
 
 ---
 
-## Under the hood: 18 specialist lenses
+## Isn't this just cold reading?
+
+Fair question. Here's the difference between this and pasting one chat
+into ChatGPT and asking "analyze me":
+
+| "analyze me" | cognitive audit |
+|---|---|
+| one conversation | every conversation you've ever had |
+| "you seem ambitious" | "you widen scope after failure 61% of the time" |
+| can't be wrong | counterevidence hunted on purpose |
+| vibes | counts, dates, platforms |
+| nothing changes Monday | three specific changes to try |
+
+Weak claims get labeled weak. Patterns only survive if they show up
+across tasks, months, and different models. And the report ends with a
+section listing everything the data *cannot* tell you.
+
+## Not therapy, promise
+
+No MBTI. No diagnoses. No "you're ambitious and curious." Just what you
+did, what happened next, and whether it keeps happening. Secrets get
+redacted. Analysis runs locally - your history never leaves your machine.
+
+## Under the hood
+
+18 specialist skills do the digging - one finds your session stores, one
+separates your behavior from the model's, one tracks repeated lessons,
+one builds the model comparison, one hunts blindspots, one writes the
+final report. Start at [audit-router](skills/audit-router/), or meet the
+whole crew below.
 
 | Lens | The question it answers |
 |---|---|
 | [audit-router](skills/audit-router/) | Where does the audit go next? |
-| [source-discovery](skills/source-discovery/) | Where is your history hiding, and how much of it survives? |
+| [source-discovery](skills/source-discovery/) | Where is your history hiding? |
 | [evidence-hygiene](skills/evidence-hygiene/) | How do secrets stay out of the report? |
-| [episode-method](skills/episode-method/) | What did *you* decide vs what did the model do? |
-| [cognitive-loop-map](skills/cognitive-loop-map/) | How do you go from idea to done - and where does it break? |
-| [framing-planning](skills/framing-planning/) | Do you frame problems well? Plan enough - or forever? |
+| [episode-method](skills/episode-method/) | What did YOU decide vs what did the model do? |
+| [cognitive-loop-map](skills/cognitive-loop-map/) | How do you go from idea to done? |
+| [framing-planning](skills/framing-planning/) | Plan enough - or forever? |
 | [calibration-audit](skills/calibration-audit/) | When were you confident and wrong? |
-| [debugging-trees](skills/debugging-trees/) | What does your debugging actually look like, branch by branch? |
-| [failure-loops](skills/failure-loops/) | What does your second move after failure cost you? |
-| [bias-candidates](skills/bias-candidates/) | Are you fooling yourself the same way, repeatedly? |
-| [collaboration-audit](skills/collaboration-audit/) | Prompts in, checks out - where does understanding leak? |
-| [learning-tracker](skills/learning-tracker/) | What have you had to learn more than once? |
-| [attention-ledger](skills/attention-ledger/) | What gets your time - and what actually pays off? |
-| [model-matrix](skills/model-matrix/) | Which model wins, at which task, in *your* data? |
-| [contradiction-finder](skills/contradiction-finder/) | Where do your words and your behavior disagree? |
-| [blindspot-miner](skills/blindspot-miner/) | What's invisible from inside every single session? |
-| [report-writer](skills/report-writer/) | How does all of it become one readable report? |
-| [prospective-kit](skills/prospective-kit/) | Which open questions can your next 30 sessions settle? |
+| [debugging-trees](skills/debugging-trees/) | What does your debugging really look like? |
+| [failure-loops](skills/failure-loops/) | What does your second move cost you? |
+| [bias-candidates](skills/bias-candidates/) | Fooling yourself the same way, repeatedly? |
+| [collaboration-audit](skills/collaboration-audit/) | Where does understanding leak? |
+| [learning-tracker](skills/learning-tracker/) | What keeps coming back? |
+| [attention-ledger](skills/attention-ledger/) | Where does the time actually go? |
+| [model-matrix](skills/model-matrix/) | Which model wins, at what, in YOUR data? |
+| [contradiction-finder](skills/contradiction-finder/) | Where do words and behavior disagree? |
+| [blindspot-miner](skills/blindspot-miner/) | What's invisible from inside every single chat? |
+| [report-writer](skills/report-writer/) | How does it become one readable report? |
+| [prospective-kit](skills/prospective-kit/) | Which questions can next month settle? |
 
-Start with [audit-router](skills/audit-router/). It routes everything else.
-
----
-
-## This is not AI therapy
-
-No MBTI. No IQ guesses. No diagnoses. No archetypes. No "you're ambitious
-and curious."
-
-It analyzes observable work behavior: what you did, what happened next,
-whether it keeps happening. If the data can't support a claim, the report
-says so in writing.
-
-**Rules baked into every skill:**
-
-1. Behavior over labels.
-2. Never blame the human for the model's behavior.
-3. Three tasks, three months, three contexts before a pattern exists.
-4. Secrets never leave the corpus - redacted quotes, local analysis,
-   derived observations only.
-5. Surprising and actionable beats flattering.
-
----
-
-## Why trust the method
-
-The pipeline borrows from fields that investigate human performance for a
-living: aviation incident analysis, diagnostic medicine, intelligence
-analysis. Every finding must carry evidence, frequency, date range,
-counterevidence, alternative explanations, and a confidence rating before
-it reaches the report.
-
-The research grounding is peer-reviewed and cited -
-metacognition, calibration, programmer cognition, automation bias,
-human-AI collaboration - see [SOURCES.md](SOURCES.md), with established
-work separated from emerging preprints.
-
-And one honest limit, stated up front: retrospective analysis finds
-suspects, not verdicts. Confounders exist, offline behavior is invisible,
-and selection bias toward recorded work is real. So the audit ends by
-converting its weakest claims into falsifiable predictions your future
-sessions can settle ([prospective-kit](skills/prospective-kit/)).
-
-Method overview: [METHOD.md](METHOD.md)
-
-## Contributing
-
-New lenses welcome if they pass the filter:
-**would this still be interesting if the subject already knew it?**
-See [CONTRIBUTING.md](CONTRIBUTING.md).
+Method: [METHOD.md](METHOD.md) · Research grounding:
+[SOURCES.md](SOURCES.md) · Contributing: [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## License
 
-MIT. Fork it, ship it, run it on your own history.
+MIT. Fork it, ship it, run it on yourself.
 
 <div align="center">
 <sub>Built by <a href="https://github.com/YannisKiefer">Yannis Kiefer</a></sub>
